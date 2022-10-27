@@ -35,8 +35,7 @@ def remove_chastisements(child):
     except MultipleObjectsReturned:
         print('\nПожалуйста, укажите фамилию и имя\n')
         return
-    chastisements = Chastisement.objects.filter(schoolkid=schoolkid)
-    chastisements.delete()
+    Chastisement.objects.filter(schoolkid=schoolkid).delete()
     print('\nВсе замечания удалены, проверьте пожалуйста это в журнале\n')
 
 
