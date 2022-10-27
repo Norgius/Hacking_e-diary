@@ -18,10 +18,10 @@ def fix_marks(child):
     except MultipleObjectsReturned:
         print('\nПожалуйста, укажите фамилию и имя\n')
         return
-    bad_marks = Mark.objects.filter(schoolkid=schoolkid, points__in=[2, 3])
-    for bad_mark in bad_marks:
-        bad_mark.points = 5
-        bad_mark.save()
+    Mark.objects.filter(
+        schoolkid=schoolkid,
+        points__in=[2, 3]
+    ).update(points=5)
     print('\nПлохие оценки стали пятерками, '
           'проверьте пожалуйста это в журнале\n')
 
